@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import FindProvider from './pages/FindProvider'
@@ -12,7 +12,7 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <Router>
+    <Router basename="/tailwindcss4">
       {/* Navbar */}
       <Navbar />
 
@@ -26,8 +26,12 @@ function App() {
         <Route path="/birth-media" element={<BirthVideosAndPhotos />} />
         <Route path="/global-media" element={<GlobalMedia />} />
         <Route path="/dhikr-cards" element={<DhikrCards />} />
+
+        {/* ✅ Fallback route for 404s */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-      <Footer/>
+
+      <Footer />
     </Router>
   )
 }
