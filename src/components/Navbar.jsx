@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import logo from '../assets/logo.svg'
 import { useState } from 'react'
 
@@ -10,17 +10,18 @@ export default function Navbar() {
       <div className="container mx-auto flex justify-between items-center px-6 py-4">
         {/* Logo + Text */}
         <div className="flex items-center gap-4">
-          <img 
-            src={logo} 
-            alt="Logo" 
-            className="h-16 md:h-20 transition-transform hover:scale-105" 
-          />
-                <span 
+          <Link to="/">
+            <img 
+              src={logo} 
+              alt="Logo" 
+              className="h-16 md:h-20 transition-transform hover:scale-105" 
+            />
+          </Link>
+          <span 
             className="text-[var(--color-dark)] font-heading text-3xl font-semibold tracking-wider"
-            >
+          >
             Amal AlRahem Birth Circle
-            </span>
-
+          </span>
         </div>
 
         {/* Desktop Menu */}
@@ -45,7 +46,6 @@ export default function Navbar() {
               }
             >
               {link.label}
-              {/* Underline animation */}
               <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--color-dark)] transition-all duration-300 group-hover:w-full"></span>
             </NavLink>
           ))}

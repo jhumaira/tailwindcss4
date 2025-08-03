@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import FAQSection from "../components/FAQSection";
+import mainLogo from "../assets/logo.svg";
 
 export default function Home() {
   return (
@@ -6,7 +8,7 @@ export default function Home() {
       {/* Modern Hero Section */}
       <section className="bg-gradient-to-b from-accent/40 to-white text-center py-28 px-6">
         <img 
-          src="/src/assets/logo.svg" 
+          src={mainLogo}  
           alt="Main Logo" 
           className="h-28 md:h-32 mx-auto mb-8 drop-shadow-xl transition-transform hover:scale-105" 
         />
@@ -18,18 +20,18 @@ export default function Home() {
           to restore gentle and safe birth traditions worldwide.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row justify-center gap-5">
-          <a 
-            href="/courses" 
+          <Link 
+            to="/courses" 
             className="bg-gradient-to-r from-primary to-secondary text-white px-10 py-4 rounded-full shadow-lg hover:shadow-xl hover:opacity-90 transition transform hover:-translate-y-1"
           >
             Explore Courses
-          </a>
-          <a 
-            href="/become-doula" 
+          </Link>
+          <Link 
+            to="/become-doula" 
             className="bg-white border-2 border-primary text-primary px-10 py-4 rounded-full hover:bg-muted transition transform hover:-translate-y-1"
           >
             Become a Doula
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -63,18 +65,18 @@ export default function Home() {
           our courses prepare you to guide mothers with confidence and compassion.
         </p>
         <div className="mt-8 flex justify-center gap-5">
-          <a 
-            href="/find-provider" 
+          <Link 
+            to="/find-provider" 
             className="bg-white text-dark px-8 py-4 rounded-full hover:bg-muted transition transform hover:-translate-y-1"
           >
             Find an Advocate
-          </a>
-          <a 
-            href="/courses" 
+          </Link>
+          <Link 
+            to="/courses" 
             className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full shadow-md hover:shadow-lg hover:opacity-90 transition transform hover:-translate-y-1"
           >
             Explore Courses
-          </a>
+          </Link>
         </div>
       </section>
 
