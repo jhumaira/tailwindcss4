@@ -8,15 +8,16 @@ import FAQ from './pages/FAQ'
 import BirthVideosAndPhotos from './pages/BirthVideosAndPhotos'
 import GlobalMedia from './pages/GlobalMedia'
 import DhikrCards from './pages/DhikrCards'
+import Enroll from './pages/Enroll'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
     <Router basename="/tailwindcss4">
-      {/* Navbar */}
+      <ScrollToTop /> {/* ✅ This ensures scroll to top */}
       <Navbar />
 
-      {/* Page Routes */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/find-provider" element={<FindProvider />} />
@@ -26,8 +27,7 @@ function App() {
         <Route path="/birth-media" element={<BirthVideosAndPhotos />} />
         <Route path="/global-media" element={<GlobalMedia />} />
         <Route path="/dhikr-cards" element={<DhikrCards />} />
-
-        {/* ✅ Fallback route for 404s */}
+        <Route path="/enroll" element={<Enroll />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 

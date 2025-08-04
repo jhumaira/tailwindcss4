@@ -1,4 +1,5 @@
 import { FiBookOpen, FiMonitor, FiUserCheck, FiAward } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 export default function BecomeDoula() {
   return (
@@ -14,12 +15,12 @@ export default function BecomeDoula() {
           during pregnancy, birth, and postpartum with compassion and knowledge.
         </p>
         <div className="mt-8">
-          <a
-            href="/courses"
+          <Link
+            to="/courses"
             className="bg-gradient-to-r from-primary to-secondary text-white px-10 py-4 rounded-full shadow-lg hover:shadow-xl hover:opacity-90 transition"
           >
             Start Your Journey
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -69,12 +70,12 @@ export default function BecomeDoula() {
           Take the first step toward a meaningful career in maternal advocacy and holistic care.
         </p>
         <div className="mt-8">
-          <a
-            href="/courses"
+          <Link
+            to="/courses"
             className="bg-white text-dark px-10 py-4 rounded-full shadow hover:bg-muted transition transform hover:-translate-y-1"
           >
             Enroll Now
-          </a>
+          </Link>
         </div>
       </section>
     </div>
