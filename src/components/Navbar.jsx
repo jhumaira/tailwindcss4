@@ -1,23 +1,34 @@
-import { NavLink, Link } from 'react-router-dom'
-import logo from '../assets/logo.svg'
-import { useState } from 'react'
+import { NavLink } from 'react-router-dom';
+import logo from '../assets/logo.svg';
+import { useState, useEffect } from 'react';
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Detect scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50); // Shrinks logo after scrolling 50px
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
+    <header className="bg-white shadow-md sticky top-0 z-50 transition-all duration-300">
       <div className="container mx-auto flex justify-between items-center px-6 py-4">
         {/* Logo + Text */}
         <div className="flex items-center gap-4">
-          <Link to="/">
-            <img 
-              src={logo} 
-              alt="Logo" 
-              className="h-16 md:h-20 transition-transform hover:scale-105" 
-            />
-          </Link>
-          <span 
+          <img
+            src={logo}
+            alt="Logo"
+            className={`transition-all duration-300 ${
+              isScrolled ? 'h-12 md:h-14' : 'h-16 md:h-20'
+            }`}
+          />
+          <span
             className="text-[var(--color-dark)] font-heading text-3xl font-semibold tracking-wider"
           >
             Amal AlRahem Birth Circle
@@ -27,14 +38,14 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <nav className="hidden md:flex gap-6 font-semibold text-dark relative">
           {[
-            { to: "/", label: "Home" },
-            { to: "/find-provider", label: "Find Advocate" },
-            { to: "/become-doula", label: "Become a Doula" },
-            { to: "/courses", label: "Courses" },
-            { to: "/faq", label: "FAQ" },
-            { to: "/birth-media", label: "Birth Media" },
-            { to: "/global-media", label: "Global Media" },
-            { to: "/dhikr-cards", label: "Dhikr Cards" },
+            { to: '/', label: 'Home' },
+            { to: '/find-provider', label: 'Find Advocate' },
+            { to: '/become-doula', label: 'Become a Doula' },
+            { to: '/courses', label: 'Courses' },
+            { to: '/faq', label: 'FAQ' },
+            { to: '/birth-media', label: 'Birth Media' },
+            { to: '/global-media', label: 'Global Media' },
+            { to: '/dhikr-cards', label: 'Dhikr Cards' },
           ].map((link, idx) => (
             <NavLink
               key={idx}
@@ -46,7 +57,6 @@ export default function Navbar() {
               }
             >
               {link.label}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--color-dark)] transition-all duration-300 group-hover:w-full"></span>
             </NavLink>
           ))}
         </nav>
@@ -64,14 +74,14 @@ export default function Navbar() {
       {menuOpen && (
         <div className="md:hidden bg-white shadow-md px-6 py-4 space-y-4">
           {[
-            { to: "/", label: "Home" },
-            { to: "/find-provider", label: "Find Advocate" },
-            { to: "/become-doula", label: "Become a Doula" },
-            { to: "/courses", label: "Courses" },
-            { to: "/faq", label: "FAQ" },
-            { to: "/birth-media", label: "Birth Media" },
-            { to: "/global-media", label: "Global Media" },
-            { to: "/dhikr-cards", label: "Dhikr Cards" },
+            { to: '/', label: 'Home' },
+            { to: '/find-provider', label: 'Find Advocate' },
+            { to: '/become-doula', label: 'Become a Doula' },
+            { to: '/courses', label: 'Courses' },
+            { to: '/faq', label: 'FAQ' },
+            { to: '/birth-media', label: 'Birth Media' },
+            { to: '/global-media', label: 'Global Media' },
+            { to: '/dhikr-cards', label: 'Dhikr Cards' },
           ].map((link, idx) => (
             <NavLink
               key={idx}
@@ -85,5 +95,5 @@ export default function Navbar() {
         </div>
       )}
     </header>
-  )
+  );
 }

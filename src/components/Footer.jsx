@@ -39,20 +39,15 @@ export default function Footer() {
         {/* Newsletter Signup */}
         <div>
           <h3 className="text-lg font-semibold mb-3">Join Our Newsletter</h3>
-          <p className="text-sm text-gray-300 mb-4">Stay updated on courses, events, and birth resources.</p>
-          <form className="flex flex-col gap-3">
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="p-3 rounded-lg text-dark focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="bg-primary text-white py-2 rounded-lg hover:bg-secondary transition"
-            >
-              Subscribe
-            </button>
-          </form>
+          <p className="text-sm text-gray-300 mb-4">
+            Stay updated on courses, events, and birth resources.
+          </p>
+          <NavLink
+            to="/newsletter"
+            className="inline-block bg-primary text-white py-2 px-4 rounded-lg hover:bg-secondary transition text-center"
+          >
+            Go to Newsletter
+          </NavLink>
         </div>
       </div>
 
