@@ -11,7 +11,8 @@ export default function Login({ setIsAuthenticated }) {
     // ✅ Updated credentials
     if (username === "midwife" && password === "birth123") {
       setIsAuthenticated(true);
-      window.location.href = "/home"; // Redirect to home after login
+      // ✅ Fix: Redirect includes basename
+      window.location.href = "/tailwindcss4/home";
     } else {
       alert("Invalid username or password");
     }

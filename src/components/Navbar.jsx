@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.svg';
 import { useState, useEffect } from 'react';
+import LogoutButton from "./LogoutButton";
+
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import FindProvider from './pages/FindProvider'
@@ -14,21 +14,43 @@ import Newsletter from './pages/Newsletter'
 import Login from './pages/Login'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
-import ProtectedRoute from './components/ProtectedRoute' // ✅ Create this wrapper
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  // Load login state from localStorage
+  useEffect(() => {
+    const storedAuth = localStorage.getItem("isAuthenticated")
+    if (storedAuth === "true") {
+      setIsAuthenticated(true)
+    }
+  }, [])
+
+  // Update localStorage whenever login state changes
+  useEffect(() => {
+    localStorage.setItem("isAuthenticated", isAuthenticated)
+  }, [isAuthenticated])
 
   return (
     <Router basename="/tailwindcss4">
       <ScrollToTop />
 
       {/* Show Navbar only after login */}
-      {isAuthenticated && <Navbar />}
+      {isAuthenticated && <Navbar setIsAuthenticated={setIsAuthenticated} />}
 
       <Routes>
-        {/* Landing page is now Login */}
-        <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        {/* Login Route: Only show when NOT authenticated */}
+        <Route
+          path="/"
+          element={
+            isAuthenticated ? (
+              <Navigate to="/home" replace />
+            ) : (
+              <Login setIsAuthenticated={setIsAuthenticated} />
+            )
+          }
+        />
 
         {/* Protected Routes */}
         <Route
@@ -111,6 +133,8 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        {/* Redirect unknown routes */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 
