@@ -1,18 +1,27 @@
-import { useState } from "react";
-import { FiPlayCircle, FiImage } from "react-icons/fi";
+import React, { useState } from 'react';
+import { FiPlayCircle, FiImage } from 'react-icons/fi';
 
 export default function BirthVideosAndPhotos() {
-  const [activeTab, setActiveTab] = useState("videos");
+  const [activeTab, setActiveTab] = useState('videos');
 
   const videos = [
-    { src: 'https://www.youtube.com/embed/P0PDw9mWeYM', title: 'Natural Birth Experience' },
-    { src: 'https://www.youtube.com/embed/sllvhkZFwGQ', title: 'Water Birth Session' },
-    { src: 'https://www.youtube.com/embed/62U3P93axi8', title: 'Rural Emergency Birth Prep' },
+    {
+      src: 'https://www.youtube.com/embed/P0PDw9mWeYM',
+      title: 'Natural Birth Experience',
+    },
+    {
+      src: 'https://www.youtube.com/embed/sllvhkZFwGQ',
+      title: 'Water Birth Session',
+    },
+    {
+      src: 'https://www.youtube.com/embed/62U3P93axi8',
+      title: 'Rural Emergency Birth Prep',
+    },
   ];
 
   const photos = [
-    { src: '/media/birth-photo1.jpg', title: 'Gentle Delivery' },
-    { src: '/media/birth-photo2.jpg', title: 'Midwife Support' },
+    { src: 'media/gentledelivery.png', title: 'Gentle Delivery' },
+    { src: 'media/midwifery.png',    title: 'Midwife Support'   },
   ];
 
   return (
@@ -26,25 +35,27 @@ export default function BirthVideosAndPhotos() {
         and natural birthing experiences worldwide.
       </p>
 
-      {/* Tabs */}
+      {/* Tab Buttons */}
       <div className="flex justify-center gap-4 mb-10">
         <button
-          onClick={() => setActiveTab("videos")}
+          type="button"
+          onClick={() => setActiveTab('videos')}
           className={`px-6 py-3 rounded-full font-medium transition ${
-            activeTab === "videos"
-              ? "bg-gradient-to-r from-primary to-secondary text-white shadow-lg"
-              : "bg-accent/30 text-dark hover:bg-accent/50"
+            activeTab === 'videos'
+              ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg'
+              : 'bg-accent/30 text-dark hover:bg-accent/50'
           }`}
         >
           <FiPlayCircle className="inline-block mr-2" />
           Videos
         </button>
         <button
-          onClick={() => setActiveTab("photos")}
+          type="button"
+          onClick={() => setActiveTab('photos')}
           className={`px-6 py-3 rounded-full font-medium transition ${
-            activeTab === "photos"
-              ? "bg-gradient-to-r from-primary to-secondary text-white shadow-lg"
-              : "bg-accent/30 text-dark hover:bg-accent/50"
+            activeTab === 'photos'
+              ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg'
+              : 'bg-accent/30 text-dark hover:bg-accent/50'
           }`}
         >
           <FiImage className="inline-block mr-2" />
@@ -52,12 +63,12 @@ export default function BirthVideosAndPhotos() {
         </button>
       </div>
 
-      {/* Videos Section */}
-      {activeTab === "videos" && (
+      {/* Videos Grid */}
+      {activeTab === 'videos' && (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {videos.map((video, index) => (
+          {videos.map((video, i) => (
             <div
-              key={index}
+              key={i}
               className="bg-white rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-1"
             >
               <iframe
@@ -67,7 +78,7 @@ export default function BirthVideosAndPhotos() {
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-              ></iframe>
+              />
               <h2 className="text-xl font-semibold text-primary text-center p-4">
                 {video.title}
               </h2>
@@ -76,12 +87,12 @@ export default function BirthVideosAndPhotos() {
         </div>
       )}
 
-      {/* Photos Section */}
-      {activeTab === "photos" && (
+      {/* Photos Grid */}
+      {activeTab === 'photos' && (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {photos.map((photo, index) => (
+          {photos.map((photo, i) => (
             <div
-              key={index}
+              key={i}
               className="bg-white rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-1"
             >
               <img
